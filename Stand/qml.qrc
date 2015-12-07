@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainEntitySpace.qml</file>
+        <file>Light.qml</file>
+        <file>EntityFrameGraph.qml</file>
+        <file>StandBasic.qml</file>
+        <file>StandRotateMain1.qml</file>
+        <file>StandRotateMain2.qml</file>
+        <file>StandRotateMain3.qml</file>
+        <file>EntityShadowEffect.qml</file>
+        <file>EntityMaterial.qml</file>
+        <file>g_wireframe.fsh</file>
+        <file>g_wireframe.vsh</file>
+    </qresource>
+</RCC>
