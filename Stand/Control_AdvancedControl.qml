@@ -9,6 +9,7 @@ Rectangle{
 //            border.color: "pink"
 //            border.width: 5
 
+
     height: parent.height*0.7
     width: parent.width
 
@@ -27,7 +28,7 @@ Rectangle{
         text: qsTr("Control panel")
         font.bold: true
         font.family: "Courier"
-        font.pointSize: 14
+        font.pixelSize: 14
         horizontalAlignment: Text.AlignHCenter
     }
 
@@ -35,6 +36,8 @@ Rectangle{
 
     TabView {
         id:i_TabView_AdvancedContol
+
+
 
         anchors.top: parent.top
         anchors.left: parent.left
@@ -64,7 +67,7 @@ Rectangle{
                         text: styleData.title
                         color: styleData.selected ? "white" : "black"
                         font.bold: styleData.selected ? true : false
-                        font.pointSize: 8
+                        font.pixelSize: 8
                         horizontalAlignment: Text.AlignHCenter
                     }
                 }
@@ -82,8 +85,13 @@ Rectangle{
             id:i_TabView_AdvancedContol_Tab1
             title:qsTr("Позиционирование")
 
+
+
             Rectangle {
+                id:i_TabView_AdvancedContol_Tab1_Rectangle
                 color: "#0000ffff"
+
+
 
                 Grid {
                     anchors.leftMargin: 5
@@ -101,10 +109,11 @@ Rectangle{
                     rows:4
 
                     height: parent.height*0.6
+                    width: parent.width
 
                     Label{
-                        text:"Revers"
-                        font.pointSize: 8
+                        text:"Реверс"
+                        font.pixelSize: 8
                          verticalAlignment: Text.AlignVCenter
                     }
 
@@ -128,44 +137,63 @@ Rectangle{
                             }
                         }
 
+                        onClicked: mainRoot_Tab1_Is_Revers_Enable = !mainRoot_Tab1_Is_Revers_Enable
+
+
+
                     }
 
 
                     Label{
-                        text:"Profile"
-                        font.pointSize: 8
+                        text:"Профиль"
+                        font.pixelSize: 8
                          verticalAlignment: Text.AlignVCenter
 
                     }
                     ComboBox {
                         width: parent.width*0.6
-                        model: [ "Trapeze", "Zero", "Zero" ]
+                        model: [ "Трапеция", "Zero", "Zero" ]
                         enabled: false
                     }
 
 
                     Label{
-                        text:"Position"
-                        font.pointSize: 8
+                        text:"Позиция"
+                        font.pixelSize: 8
                         verticalAlignment: Text.AlignVCenter
 
 
                     }
                     SpinBox {
-                        width: parent.width*0.6
+                        id:i_TabView_AdvancedContol_Tab1_Position
 
+                        width: parent.width*0.5
 
+                        decimals: 2
+                        maximumValue: 360
+                        value: 45
+
+                        onValueChanged: mainRoot_Slider_X_Axis_Main2_Value = value
                     }
 
 
                     Label{
-                        text:"Speed"
-                        font.pointSize: 8
+                        text:"Скорость"
+                        font.pixelSize: 8
+
+                        width: parent.width*0.3
 
                     }
                     SpinBox {
-                        width: parent.width*0.6
+                        id: i_Tab1_SpinBox_Speed
 
+                        width: parent.width*0.5
+
+                        decimals: 2
+                        maximumValue: 360
+                        value: 10
+
+                        onValueChanged: i_mainRoot.mainRoot_Tab1_SpeedRotation_Value = value
 
 
                     }
@@ -189,7 +217,8 @@ Rectangle{
             Rectangle {
                 color: "#0000ffff"
 
-                Grid {
+
+                Column {
                     anchors.leftMargin: 5
                     anchors.topMargin: 10
                     clip: false
@@ -197,70 +226,98 @@ Rectangle{
                     antialiasing: true
                     z: 0
                     rotation: 0
-                    scale: 1
-                    spacing: 5
 
+                    Row {
+                        id: row1
+                        width: parent.width
+                        height: 30
 
-                    columns: 2
-                    rows:4
+                        Label {
+                            id: label1
+                            text: qsTr("Начальная скорость")
 
-                    height: parent.height*0.6
+                            font.pixelSize: 8
+                            verticalAlignment: Text.AlignVCenter
 
-                    Label{
-                        text:"Начальная скорость"
-                        font.pointSize: 8
-                        verticalAlignment: Text.AlignVCenter
+                            width: parent.width*0.55
+                        }
+
+                        SpinBox {
+                            id: spinBox1
+
+                            decimals: 2
+                            maximumValue: 360
+                            value: 0
+                        }
                     }
 
-                    SpinBox {
-                        width: parent.width*0.4
+                    Row {
+                        id: row2
+                        width: parent.width
+                        height: 30
+                        Label {
+                            id: label2
+                            text: qsTr("Конечная скорость")
 
+                            font.pixelSize: 8
+                            verticalAlignment: Text.AlignVCenter
 
+                            width: parent.width*0.55
+                        }
+
+                        SpinBox {
+                            id: spinBox2
+                            decimals: 2
+                            maximumValue: 360
+                            value: 100
+                        }
                     }
 
+                    Row {
+                        id: row3
+                        width: parent.width
+                        height: 30
+                        Label {
+                            id: label3
+                            text: qsTr("Шаг")
 
-                    Label{
-                        text:"Конечная скорость"
-                        font.pointSize: 8
-                         verticalAlignment: Text.AlignVCenter
+                            font.pixelSize: 8
+                            verticalAlignment: Text.AlignVCenter
 
-                    }
-                    SpinBox {
-                        width: parent.width*0.4
+                            width: parent.width*0.55
+                        }
 
-
-                    }
-
-
-                    Label{
-                        text:"Шаг"
-                        font.pointSize: 8
-                        verticalAlignment: Text.AlignVCenter
-
-
-                    }
-                    SpinBox {
-                        width: parent.width*0.4
-
-
+                        SpinBox {
+                            id: spinBox3
+                            decimals: 2
+                            maximumValue: 360
+                            value: 1
+                        }
                     }
 
+                    Row {
+                        id: row4
+                        width: parent.width
+                        height: 30
+                        Label {
+                            id: label4
+                            text: qsTr("Время")
 
-                    Label{
-                        text:"Время"
-                        font.pointSize: 8
+                            font.pixelSize: 8
+                            verticalAlignment: Text.AlignVCenter
 
+                            width: parent.width*0.55
+                        }
+
+                        SpinBox {
+                            id: spinBox4
+                            decimals: 2
+                            maximumValue: 360
+                            value: 10
+                        }
                     }
-                    SpinBox {
-                        width: parent.width*0.4
-
-
-
-                    }
-
-
-
                 }
+
 
             }
 
@@ -300,12 +357,16 @@ Rectangle{
 
                     Label{
                         text:"Период"
-                        font.pointSize: 8
+                        font.pixelSize: 8
                          verticalAlignment: Text.AlignVCenter
 
                     }
                     SpinBox {
                         width: parent.width*0.6
+
+                        decimals: 2
+                        maximumValue: 360
+                        value: 1
 
 
                     }
@@ -313,7 +374,7 @@ Rectangle{
 
                     Label{
                         text:"Амплитуда"
-                        font.pointSize: 8
+                        font.pixelSize: 8
                         verticalAlignment: Text.AlignVCenter
 
 
@@ -321,17 +382,25 @@ Rectangle{
                     SpinBox {
                         width: parent.width*0.6
 
+                        decimals: 2
+                        maximumValue: 360
+                        value: 1
+
 
                     }
 
 
                     Label{
                         text:"Циклов"
-                        font.pointSize: 8
+                        font.pixelSize: 8
 
                     }
                     SpinBox {
                         width: parent.width*0.6
+
+                        decimals: 0
+                        maximumValue: 360
+                        value: 1
 
 
 
@@ -384,6 +453,8 @@ Rectangle{
                 }
             }
 
+            onClicked: mainRoot_Is_Y_Axis_Main1_Enable=!mainRoot_Is_Y_Axis_Main1_Enable
+
         }
 
         CheckBox{
@@ -406,6 +477,9 @@ Rectangle{
                 }
             }
 
+
+            onClicked: mainRoot_Is_X_Axis_Main2_Enable=!mainRoot_Is_X_Axis_Main2_Enable
+
         }
 
         CheckBox{
@@ -427,6 +501,8 @@ Rectangle{
                         }
                 }
             }
+
+            onClicked: mainRoot_Is_Y_Axis_Main3_Enable=!mainRoot_Is_Y_Axis_Main3_Enable
 
         }
 
@@ -469,10 +545,12 @@ Rectangle{
                 label: Text{
                     text: qsTr("Инициализировать")
 
-                    font.pointSize: 8
+                    font.pixelSize: 8
                     horizontalAlignment: Text.AlignHCenter
                 }
             }
+
+
         }
 
         Button {
@@ -490,10 +568,13 @@ Rectangle{
                 label: Text{
                     text: qsTr("Выполнить")
 
-                    font.pointSize: 8
+                    font.pixelSize: 8
                     horizontalAlignment: Text.AlignHCenter
                 }
             }
+
+            onClicked: mainRoot_Tab1_Is_SpeedRotation_Enable=true
+
         }
 
         Button {
@@ -511,10 +592,14 @@ Rectangle{
                 label: Text{
                     text: qsTr("Стоп")
 
-                    font.pointSize: 8
+                    font.pixelSize: 8
                     horizontalAlignment: Text.AlignHCenter
                 }
             }
+
+            onClicked: mainRoot_Tab1_Is_SpeedRotation_Enable=false
+
+
         }
     }
 

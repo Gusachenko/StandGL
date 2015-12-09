@@ -5,15 +5,19 @@ import QtQuick 2.0 as QQ2
 
 Entity{
     id:i_MainEntitySpace
-    property real test_val: 0.1
 
-    function testmove(){return test_val=test_val+0.1;}
+    property int iteratorAngleMain3: 1
     function angleToRotate_Main3(value,axis){
         var axis_y=0.0;
         var axis_z=0.0;
 
         var procentOfValue=0.0;
         var valueForSteeling=0.0;
+
+        if(value>=360){
+            value=value-(360*iteratorAngleMain3);
+        }
+
 
         procentOfValue=(value/360)*100;
         valueForSteeling = procentOfValue*0.01;
@@ -52,9 +56,16 @@ Entity{
             if(axis=="axis_y")
                 return axis_y
             else
-            if(axis=="axis_z")
+            if(axis=="axis_z"){
+                if(value>=360 && !mainRoot_Tab1_Is_Revers_Enable) iteratorAngleMain3=iteratorAngleMain3+1
+                else if(value>=360 && mainRoot_Tab1_Is_Revers_Enable) iteratorAngleMain3=iteratorAngleMain3-1;
+
                 return axis_z;
+            }
     }
+
+
+
 
     Light{
         id: light
@@ -163,7 +174,7 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_MainControl_Rect.slider_Y_Axis_Main1_Value
+                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
@@ -194,11 +205,11 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: i_MainControl_Rect.slider_X_Axis_Main2_Value
+                angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_MainControl_Rect.slider_Y_Axis_Main1_Value
+                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
@@ -229,16 +240,16 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: i_RectangleSliders.slider_X_Axis_Main2_Value
+                angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
             }
             Rotate {
-                axis: Qt.vector3d(0, angleToRotate_Main3(i_RectangleSliders.slider_X_Axis_Main2_Value,"axis_y"),
-                                  angleToRotate_Main3(i_RectangleSliders.slider_X_Axis_Main2_Value,"axis_z"))      // Y-Axis <->
-                angle: i_RectangleSliders.slider_Y_Axis_Main3_Value
+                axis: Qt.vector3d(0, angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
+                                  angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_z"))      // Y-Axis <->
+                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_RectangleSliders.slider_Y_Axis_Main1_Value
+                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:

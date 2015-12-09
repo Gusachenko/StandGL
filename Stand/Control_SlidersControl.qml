@@ -16,11 +16,6 @@ Rectangle{
     anchors.bottom: parent.bottom
     anchors.left: parent.left
 
-    property real slider_Y_Axis_Main1_Value: slider_Y_Axis_Main1.value
-    property real slider_X_Axis_Main2_Value: slider_X_Axis_Main2.value
-    property real slider_Y_Axis_Main3_Value: slider_Y_Axis_Main3.value
-
-
     Column {
         anchors.leftMargin: 5
         anchors.topMargin: 10
@@ -41,6 +36,8 @@ Rectangle{
             maximumValue: 360
             stepSize: 1
             orientation: Qt.Horizontal
+
+            onValueChanged: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value = value,i_mainRoot.mainRoot_Tab1_Is_SpeedRotation_Enable = false
 
             Label {
                 id: label1
@@ -66,6 +63,10 @@ Rectangle{
             stepSize: 1
             orientation: Qt.Horizontal
 
+            onValueChanged: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value = value,i_mainRoot.mainRoot_Tab1_Is_SpeedRotation_Enable = false
+
+
+
             Label {
                 id: label2
                 x: 54
@@ -88,6 +89,10 @@ Rectangle{
             maximumValue: 360
             stepSize: 1
             orientation: Qt.Horizontal
+
+            onValueChanged: i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value = value,i_mainRoot.mainRoot_Tab1_Is_SpeedRotation_Enable = false
+
+
 
             Label {
                 id: label3

@@ -9,9 +9,66 @@ import QtQuick.Controls.Styles 1.4
 
 Item{
     id:i_mainRoot
+
+
+    //MainRotation objects
+    property real mainRoot_Slider_Y_Axis_Main1_Value: 0
+    property real mainRoot_Slider_X_Axis_Main2_Value: 0
+    property real mainRoot_Slider_Y_Axis_Main3_Value: 0
+
+    property bool mainRoot_Is_Y_Axis_Main1_Enable: false
+    property bool mainRoot_Is_X_Axis_Main2_Enable: false
+    property bool mainRoot_Is_Y_Axis_Main3_Enable: false
+
+    //MainControlMenu//
+
+    //Timer for rotation Tab1
+    property real mainRoot_Tab1_SpeedRotation_Value: 10
+    property bool mainRoot_Tab1_Is_SpeedRotation_Enable: false
+    property bool mainRoot_Tab1_Is_Revers_Enable: false
+
+    //AnglePosition Tab1
+    property real mainRoot_Tab1_PositionAngle: 45
+
+
+    //==========================//
+    //Tab1
+    function set_Position_Speed_Main1(value){
+        value=value*0.1
+        if(!mainRoot_Tab1_Is_Revers_Enable){
+            if(mainRoot_Is_Y_Axis_Main1_Enable) mainRoot_Slider_Y_Axis_Main1_Value=mainRoot_Slider_Y_Axis_Main1_Value+value;
+            if(mainRoot_Is_X_Axis_Main2_Enable) mainRoot_Slider_X_Axis_Main2_Value=mainRoot_Slider_X_Axis_Main2_Value+value;
+            if(mainRoot_Is_Y_Axis_Main3_Enable) mainRoot_Slider_Y_Axis_Main3_Value=mainRoot_Slider_Y_Axis_Main3_Value+value;
+        } else
+        {
+            if(mainRoot_Is_Y_Axis_Main1_Enable) mainRoot_Slider_Y_Axis_Main1_Value=mainRoot_Slider_Y_Axis_Main1_Value-value;
+            if(mainRoot_Is_X_Axis_Main2_Enable) mainRoot_Slider_X_Axis_Main2_Value=mainRoot_Slider_X_Axis_Main2_Value-value;
+            if(mainRoot_Is_Y_Axis_Main3_Enable) mainRoot_Slider_Y_Axis_Main3_Value=mainRoot_Slider_Y_Axis_Main3_Value-value;
+        }
+    }
+
+    Timer{
+        id:i_timerSet_Position_Speed
+        repeat: mainRoot_Tab1_Is_SpeedRotation_Enable
+        running: mainRoot_Tab1_Is_SpeedRotation_Enable
+
+        interval: 1
+        onTriggered: set_Position_Speed_Main1(mainRoot_Tab1_SpeedRotation_Value)
+    }
+
+
+
+
+
+
+
+
+
+
     width: 650
     height: 425
     visible: true
+
 
     Scene3D{
         id:i_Scene3D
@@ -43,12 +100,11 @@ Item{
 //        border.color:"lightgreen"
 //        border.width: 3
 
-        property real slider_Y_Axis_Main1_Value: i_RectangleSliders.slider_Y_Axis_Main1_Value
-        property real slider_X_Axis_Main2_Value: i_RectangleSliders.slider_X_Axis_Main2_Value
-        property real slider_Y_Axis_Main3_Value: i_RectangleSliders.slider_Y_Axis_Main3_Value
 
         Control_AdvancedControl{
             id:i_Rectangle_AdvancedContol
+
+
         }
         Control_SlidersControl{
             id:i_RectangleSliders
