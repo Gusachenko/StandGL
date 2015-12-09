@@ -163,7 +163,7 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: slider_Y_Axis_Main1.value
+                angle: i_MainControl_Rect.slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
@@ -194,11 +194,11 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: slider_X_Axis_Main2.value
+                angle: i_MainControl_Rect.slider_X_Axis_Main2_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: slider_Y_Axis_Main1.value
+                angle: i_MainControl_Rect.slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
@@ -229,16 +229,16 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: slider_X_Axis_Main2.value
+                angle: i_RectangleSliders.slider_X_Axis_Main2_Value
             }
             Rotate {
-                axis: Qt.vector3d(0, angleToRotate_Main3(slider_X_Axis_Main2.value,"axis_y"),
-                                  angleToRotate_Main3(slider_X_Axis_Main2.value,"axis_z"))      // Y-Axis <->
-                angle: slider_Y_Axis_Main3.value
+                axis: Qt.vector3d(0, angleToRotate_Main3(i_RectangleSliders.slider_X_Axis_Main2_Value,"axis_y"),
+                                  angleToRotate_Main3(i_RectangleSliders.slider_X_Axis_Main2_Value,"axis_z"))      // Y-Axis <->
+                angle: i_RectangleSliders.slider_Y_Axis_Main3_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: slider_Y_Axis_Main1.value
+                angle: i_RectangleSliders.slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
