@@ -9,7 +9,6 @@ Rectangle{
 //            border.color: "pink"
 //            border.width: 5
 
-
     height: parent.height*0.7
     width: parent.width
 
@@ -31,7 +30,6 @@ Rectangle{
         font.pixelSize: 14
         horizontalAlignment: Text.AlignHCenter
     }
-
 
 
     TabView {
@@ -206,9 +204,6 @@ Rectangle{
         }
 
 
-
-
-
         //TAB2
         Tab {
             id:i_TabView_AdvancedContol_Tab2
@@ -321,10 +316,7 @@ Rectangle{
 
             }
 
-
-
-
-        }
+        }//TAB2:END
 
         //TAB3
         Tab {
@@ -414,8 +406,8 @@ Rectangle{
 
 
 
-        }
-    }
+        }//TAB3:END
+    }//TabView:END
 
 
     Grid {
@@ -505,17 +497,7 @@ Rectangle{
             onClicked: mainRoot_Is_Y_Axis_Main3_Enable=!mainRoot_Is_Y_Axis_Main3_Enable
 
         }
-
-
-
-
-
-
-
-
-
-
-    }//
+    }//Gid:End
 
 
     Rectangle{
@@ -602,11 +584,5 @@ Rectangle{
 
         }
     }
-
-
-
-
-
-
 }
 

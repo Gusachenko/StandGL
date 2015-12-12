@@ -16,6 +16,8 @@ Rectangle{
     anchors.bottom: parent.bottom
     anchors.left: parent.left
 
+    visible: false
+
     Column {
         anchors.leftMargin: 5
         anchors.topMargin: 10
@@ -33,6 +35,7 @@ Rectangle{
             width: parent.width*0.9
             anchors.horizontalCenterOffset: 0
             anchors.leftMargin: 0
+            minimumValue: -360
             maximumValue: 360
             stepSize: 1
             orientation: Qt.Horizontal
@@ -59,6 +62,7 @@ Rectangle{
             width: parent.width*0.9
             anchors.horizontalCenterOffset: 0
             anchors.leftMargin: 0
+            minimumValue: -360
             maximumValue: 360
             stepSize: 1
             orientation: Qt.Horizontal
@@ -86,6 +90,7 @@ Rectangle{
             width: parent.width*0.9
             anchors.horizontalCenterOffset: 0
             anchors.leftMargin: 0
+            minimumValue: -360
             maximumValue: 360
             stepSize: 1
             orientation: Qt.Horizontal

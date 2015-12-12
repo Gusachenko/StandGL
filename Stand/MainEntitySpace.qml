@@ -6,7 +6,7 @@ import QtQuick 2.0 as QQ2
 Entity{
     id:i_MainEntitySpace
 
-    property int iteratorAngleMain3: 1
+
     function angleToRotate_Main3(value,axis){
         var axis_y=0.0;
         var axis_z=0.0;
@@ -14,52 +14,97 @@ Entity{
         var procentOfValue=0.0;
         var valueForSteeling=0.0;
 
+        var isRevers=false;
+        if(value<0){
+
+            value=-value;
+            isRevers=true;
+        }else isRevers=false;
+
+        var iteratorOfAmountValue=Math.ceil(value/360);
+
+
+
         if(value>=360){
-            value=value-(360*iteratorAngleMain3);
+            value=360-((360*iteratorOfAmountValue)-value);
         }
 
 
         procentOfValue=(value/360)*100;
         valueForSteeling = procentOfValue*0.01;
 
-            if(procentOfValue<25){
-                valueForSteeling=((procentOfValue/24)*100)*0.01;
+            if(!isRevers){
+                if(procentOfValue<25){
+                    valueForSteeling=((procentOfValue/24)*100)*0.01;
+                        axis_y=1.0-valueForSteeling;
+                        axis_z=0.0+valueForSteeling;
+                }else
+                if(25<=procentOfValue && procentOfValue<50){
+                    valueForSteeling=(((procentOfValue-25)/25)*100)*0.01;
 
-                axis_y=1.0-valueForSteeling;
-                axis_z=0.0+valueForSteeling;
-            }else
-            if(25<=procentOfValue && procentOfValue<50){
-                valueForSteeling=(((procentOfValue-25)/25)*100)*0.01;
+                    axis_y=0.0-valueForSteeling;
+                    axis_z=1.0-valueForSteeling;
+                }else
+                if(50<=procentOfValue && procentOfValue<75){
+                    valueForSteeling=(((procentOfValue-50)/25)*100)*0.01;
 
-                axis_y=0.0-valueForSteeling;
-                axis_z=1.0-valueForSteeling;
-            }else
-            if(50<=procentOfValue && procentOfValue<75){
-                valueForSteeling=(((procentOfValue-50)/25)*100)*0.01;
+                    axis_y=1.0-valueForSteeling;
+                    axis_z=0.0+valueForSteeling;
+                }else
+                if(75<=procentOfValue<100){
+                    valueForSteeling=(((procentOfValue-75)/25)*100)*0.01;
 
-                axis_y=1.0-valueForSteeling;
-                axis_z=0.0+valueForSteeling;
-            }else
-            if(75<=procentOfValue<100){
-                valueForSteeling=(((procentOfValue-75)/25)*100)*0.01;
+                    axis_y=0.0-valueForSteeling;
+                    axis_z=1.0-valueForSteeling;
+                }else
+                if(100<=procentOfValue){
+                    valueForSteeling=(((procentOfValue-75)/25)*100)*0.01;
 
-                axis_y=0.0-valueForSteeling;
-                axis_z=1.0-valueForSteeling;
-            }else
-            if(100<=procentOfValue){
-                valueForSteeling=(((procentOfValue-75)/25)*100)*0.01;
-
-                axis_y=1.0+valueForSteeling;
-                axis_z=0.0-valueForSteeling;
+                    axis_y=1.0+valueForSteeling;
+                    axis_z=0.0-valueForSteeling;
+                }
+            }else if(isRevers){
+                if(procentOfValue<13){
+                    valueForSteeling=(((procentOfValue)/12)*100)*0.01;
+                    axis_y=-1.0;
+                    axis_z=0.0+valueForSteeling;
+                }else if(13<=procentOfValue && procentOfValue<25){
+                    valueForSteeling=(((procentOfValue-13)/13)*100)*0.01;
+                    axis_y=-1.0+valueForSteeling;
+                    axis_z=1.0;
+                }else if(25<=procentOfValue && procentOfValue<38){
+                    valueForSteeling=(((procentOfValue-(25))/13)*100)*0.01;
+                    axis_y=0.0+valueForSteeling;
+                    axis_z=1.0;
+                }else if(38<=procentOfValue && procentOfValue<50){
+                    valueForSteeling=(((procentOfValue-(38))/13)*100)*0.01;
+                    axis_y=1.0;
+                    axis_z=1.0-valueForSteeling;
+                }else if(50<=procentOfValue && procentOfValue<63){
+                    valueForSteeling=(((procentOfValue-(50))/13)*100)*0.01;
+                    axis_y=1.0;
+                    axis_z=0.0-valueForSteeling;
+                }else if(63<=procentOfValue && procentOfValue<75){
+                    valueForSteeling=(((procentOfValue-(63))/13)*100)*0.01;
+                    axis_y=1.0-valueForSteeling;
+                    axis_z=-1.0;
+                }else if(75<=procentOfValue && procentOfValue<87){
+                    valueForSteeling=(((procentOfValue-(75))/13)*100)*0.01;
+                    axis_y=0.0-valueForSteeling;
+                    axis_z=-1.0;
+                }else if(87<=procentOfValue && procentOfValue<100){
+                    axis_y=-1.0;
+                    axis_z=-1.0;
+                }else if(procentOfValue<=100){
+                    axis_y=-1.0;
+                    axis_z=-1.0;
+                }
             }
 
             if(axis=="axis_y")
                 return axis_y
             else
             if(axis=="axis_z"){
-                if(value>=360 && !mainRoot_Tab1_Is_Revers_Enable) iteratorAngleMain3=iteratorAngleMain3+1
-                else if(value>=360 && mainRoot_Tab1_Is_Revers_Enable) iteratorAngleMain3=iteratorAngleMain3-1;
-
                 return axis_z;
             }
     }
@@ -243,9 +288,11 @@ Entity{
                 angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
             }
             Rotate {
-                axis: Qt.vector3d(0, angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
-                                  angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_z"))      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value
+                // Y-Axis <->
+               axis: Qt.vector3d(0, angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
+                                  angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_z"))
+
+                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value    // i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->

@@ -56,15 +56,6 @@ Item{
         onTriggered: set_Position_Speed_Main1(mainRoot_Tab1_SpeedRotation_Value)
     }
 
-
-
-
-
-
-
-
-
-
     width: 650
     height: 425
     visible: true
