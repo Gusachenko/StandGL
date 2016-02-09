@@ -13,7 +13,6 @@
         <file>g_wireframe.fsh</file>
         <file>g_wireframe.vsh</file>
         <file>Control_CustomPieMenu.qml</file>
-        <file>Control_AdvancedControl.qml</file>
         <file>Control_SlidersControl.qml</file>
         <file>GroundPlane.qml</file>
     </qresource>
