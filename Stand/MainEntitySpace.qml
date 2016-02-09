@@ -117,6 +117,7 @@ Entity{
         ratio: width / height
     }
 
+
     Camera {
         id: camera
         projectionType: CameraLens.PerspectiveProjection
@@ -170,10 +171,10 @@ Entity{
     Entity{
         property Material material_Rocket: EntityMaterial {
             effect: shadowMapEffectD                            //!!!!
-            ambientLight: "red"
-            specularColor: Qt.rgba(0.2, 0.2, 0.2, 1.0)
-            diffuseMap: "qrc:/img/saturnmap.jpg"
-            shininess: 1.0
+            ambientLight: "#A80000"
+            diffuseColor: Qt.rgba( 1.0, 0.0, 0.0, 1.0 )
+            specularColor: Qt.rgba(0.5, 0.5, 0.5, 1.0)
+            shininess: 50.0
             opacity: 1.0
         }
 
@@ -202,10 +203,10 @@ Entity{
     Entity{
         property Material material_Rocket: EntityMaterial {
             effect: shadowMapEffectD                            //!!!!
-            ambientLight: "#F03939"
-            specularColor: Qt.rgba(0.2, 0.2, 0.2, 1.0)
-            diffuseMap: "qrc:/img/saturnmap.jpg"
-            shininess: 1.0
+            ambientLight: "#BD0000"
+            diffuseColor: Qt.rgba( 1.0, 0.82, 0.82, 1.0 )
+            specularColor: Qt.rgba(1.0, 1.0, 1.0, 1.0)
+            shininess: 30.0
             opacity: 1.0
         }
 
@@ -237,10 +238,10 @@ Entity{
     Entity{
         property Material material_Rocket: EntityMaterial {
             effect: shadowMapEffectD                            //!!!!
-            ambientLight: "white"
-            specularColor: Qt.rgba(0.2, 0.2, 0.2, 1.0)
-            diffuseMap: "qrc:/img/saturnmap.jpg"
-            shininess: 1.0
+            ambientLight: "#706565"
+            diffuseColor: Qt.rgba( 0.76, 0.72, 0.72, 1.0 )
+            specularColor: Qt.rgba(0.95, 0.92, 0.92, 1.0)
+            shininess: 50.0
             opacity: 1.0
         }
 
@@ -272,10 +273,10 @@ Entity{
     Entity{
         property Material material_Rocket: EntityMaterial {
             effect: shadowMapEffectD                            //!!!!
-            ambientLight: "#259C7E"
-            specularColor: Qt.rgba(0.2, 0.2, 0.2, 1.0)
-            diffuseMap: "qrc:/img/saturnmap.jpg"
-            shininess: 1.0
+            ambientLight: "#116000"
+            diffuseColor: Qt.rgba( 0.11, 0.66, 0.0, 1.0 )
+            specularColor: Qt.rgba(0.14, 0.84, 0.0, 1.0)
+            shininess: 50.0
             opacity: 1.0
         }
 

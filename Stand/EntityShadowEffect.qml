@@ -10,8 +10,7 @@ Effect {
     parameters: [
         Parameter { name: "lightViewProjection"; value: root.light.lightViewProjection },
         Parameter { name: "lightPosition";  value: root.light.lightPosition },
-        Parameter { name: "lightIntensity"; value: root.light.lightIntensity },
-        Parameter { name: "shadowMapTexture"; value: root.shadowTexture }
+        Parameter { name: "lightIntensity"; value: root.light.lightIntensity }
     ]
 
     techniques: [
@@ -44,16 +43,9 @@ Effect {
 
                     bindings: [
                         // Uniforms (those provided by the user)
-                        ParameterMapping {
-                            parameterName: "ambient";
-                            shaderVariableName: "ka";
-                            bindingType: ParameterMapping.Uniform
-                        },
-                        ParameterMapping {
-                            parameterName: "specular";
-                            shaderVariableName: "ks";
-                            bindingType: ParameterMapping.Uniform
-                        }
+                        ParameterMapping { parameterName: "ambient"; shaderVariableName: "ka"; bindingType: ParameterMapping.Uniform },
+                        ParameterMapping { parameterName: "diffuse";  shaderVariableName: "kd"; bindingType: ParameterMapping.Uniform },
+                        ParameterMapping { parameterName: "specular";  shaderVariableName: "ks"; bindingType: ParameterMapping.Uniform }
                     ]
 
                     shaderProgram: ShaderProgram {
@@ -79,16 +71,9 @@ Effect {
 
                     bindings: [
                         // Uniforms (those provided by the user)
-                        ParameterMapping {
-                            parameterName: "ambient";
-                            shaderVariableName: "ka";
-                            bindingType: ParameterMapping.Uniform
-                        },
-                        ParameterMapping {
-                            parameterName: "specular";
-                            shaderVariableName: "ks";
-                            bindingType: ParameterMapping.Uniform
-                        }
+                        ParameterMapping { parameterName: "ambient"; shaderVariableName: "ka"; bindingType: ParameterMapping.Uniform },
+                        ParameterMapping { parameterName: "diffuse";  shaderVariableName: "kd"; bindingType: ParameterMapping.Uniform },
+                        ParameterMapping { parameterName: "specular";  shaderVariableName: "ks"; bindingType: ParameterMapping.Uniform }
                     ]
 
                     shaderProgram: ShaderProgram {
@@ -115,16 +100,9 @@ Effect {
 
                     bindings: [
                         // Uniforms (those provided by the user)
-                        ParameterMapping {
-                            parameterName: "ambient";
-                            shaderVariableName: "ka";
-                            bindingType: ParameterMapping.Uniform
-                        },
-                        ParameterMapping {
-                            parameterName: "specular";
-                            shaderVariableName: "ks";
-                            bindingType: ParameterMapping.Uniform
-                        }
+                        ParameterMapping { parameterName: "ambient"; shaderVariableName: "ka"; bindingType: ParameterMapping.Uniform },
+                        ParameterMapping { parameterName: "diffuse";  shaderVariableName: "kd"; bindingType: ParameterMapping.Uniform },
+                        ParameterMapping { parameterName: "specular";  shaderVariableName: "ks"; bindingType: ParameterMapping.Uniform }
                     ]
 
                     shaderProgram: ShaderProgram {

@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>img/saturnmap.jpg</file>
         <file>geometryObjects/stand/basic.obj</file>
         <file>geometryObjects/stand/rotateMain1.obj</file>
         <file>geometryObjects/stand/rotateMain2.obj</file>
