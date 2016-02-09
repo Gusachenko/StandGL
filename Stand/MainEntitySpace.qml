@@ -130,9 +130,10 @@ Entity{
         viewCenter: Qt.vector3d( 0, 0, 0 )
     }
 
-    Configuration  {
-        controlledCamera: camera
-    }
+//!CONTROLLED CAMERA
+//    Configuration  {
+//        controlledCamera: camera
+//    }
 
     components: [
         EntityFrameGraph {          //ФОН сцены
