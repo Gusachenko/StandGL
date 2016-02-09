@@ -15,5 +15,6 @@
         <file>Control_CustomPieMenu.qml</file>
         <file>Control_AdvancedControl.qml</file>
         <file>Control_SlidersControl.qml</file>
+        <file>GroundPlane.qml</file>
     </qresource>
 </RCC>

@@ -125,7 +125,7 @@ Entity{
         aspectRatio: width / height
         nearPlane: 0.01
         farPlane: 1000.0
-        position: Qt.vector3d( 0.0, 0.0, 30.0 )
+        position: Qt.vector3d( 0.0, 10.0, 35.0 )
         upVector:  Qt.vector3d(0, 1, 0)
         viewCenter: Qt.vector3d( 0, 0, 0 )
     }
@@ -204,9 +204,9 @@ Entity{
         property Material material_Rocket: EntityMaterial {
             effect: shadowMapEffectD                            //!!!!
             ambientLight: "#BD0000"
-            diffuseColor: Qt.rgba( 1.0, 0.82, 0.82, 1.0 )
+            diffuseColor: Qt.rgba( 0.1, 0.1, 0.1, 1.0 )
             specularColor: Qt.rgba(1.0, 1.0, 1.0, 1.0)
-            shininess: 30.0
+            shininess: 80.0
             opacity: 1.0
         }
 
@@ -276,7 +276,7 @@ Entity{
             ambientLight: "#116000"
             diffuseColor: Qt.rgba( 0.11, 0.66, 0.0, 1.0 )
             specularColor: Qt.rgba(0.14, 0.84, 0.0, 1.0)
-            shininess: 50.0
+            shininess: 90.0
             opacity: 1.0
         }
 
@@ -310,4 +310,14 @@ Entity{
         }
         components: [ i_RotateMain3, material_Rocket, transform_Rocket ]
     }
+
+    // Plane entity
+    GroundPlane {
+        material: EntityMaterial {
+            effect: shadowMapEffectD
+            diffuseColor: Qt.rgba(0.29, 0.31, 0.4, 1.0)
+            specularColor: Qt.rgba(0.44, 0.46, 0.58, 1.0)
+        }
+    }
+
 }
