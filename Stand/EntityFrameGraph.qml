@@ -29,8 +29,8 @@ FrameGraph {
                                 type: RenderAttachment.DepthAttachment
                                 texture: Texture2D {
                                     id: depthTexture
-                                    width: i_mainRoot.width
-                                    height: i_mainRoot.height
+                                    width: _window.width
+                                    height: _window.height
                                     format: Texture.D24
                                     generateMipMaps: false
                                     magnificationFilter: Texture.Linear

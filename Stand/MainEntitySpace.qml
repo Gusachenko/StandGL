@@ -114,7 +114,7 @@ Entity{
 
     Light{
         id: light
-        ratio: width / height
+        ratio: _window.width / _window.height
     }
 
 
@@ -122,7 +122,7 @@ Entity{
         id: camera
         projectionType: CameraLens.PerspectiveProjection
         fieldOfView: 60
-        aspectRatio: width / height
+        aspectRatio: _window.width / _window.height
         nearPlane: 0.01
         farPlane: 1000.0
         position: Qt.vector3d( 0.0, 10.0, 35.0 )
@@ -221,7 +221,7 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
+                angle: i_MainEntitySpace.mainRoot_Slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
@@ -252,11 +252,11 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
+                angle: i_MainEntitySpace.mainRoot_Slider_X_Axis_Main2_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
+                angle: i_MainEntitySpace.mainRoot_Slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
@@ -287,18 +287,18 @@ Entity{
             }
             Rotate {
                 axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
+                angle: i_MainEntitySpace.mainRoot_Slider_X_Axis_Main2_Value
             }
             Rotate {
                 // Y-Axis <->
-               axis: Qt.vector3d(0, angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
-                                  angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_z"))
+               axis: Qt.vector3d(0, angleToRotate_Main3(i_MainEntitySpace.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
+                                  angleToRotate_Main3(i_MainEntitySpace.mainRoot_Slider_X_Axis_Main2_Value,"axis_z"))
 
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value    // i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value
+                angle: i_MainEntitySpace.mainRoot_Slider_Y_Axis_Main3_Value    // i_MainEntitySpace.mainRoot_Slider_Y_Axis_Main3_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
+                angle: i_MainEntitySpace.mainRoot_Slider_Y_Axis_Main1_Value
             }
             Rotate {
                 axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:

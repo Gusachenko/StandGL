@@ -1,30 +1,32 @@
+#include <window.h>
+#include <Qt3DRenderer/qrenderaspect.h>
+#include <Qt3DInput/QInputAspect>
+#include <Qt3DQuick/QQmlAspectEngine>
+
 #include <QGuiApplication>
-#include <QQuickView>
-#include <QOpenGLContext>
+#include <QtQml>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-   QGuiApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
-    QSurfaceFormat format;
-    if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
-#ifdef Q_OS_OSX
-        format.setVersion(3, 2);
-#endif
-        format.setProfile(QSurfaceFormat::CoreProfile);
-    }
+    Window view;
+    Qt3D::Quick::QQmlAspectEngine engine;
 
-    format.setDepthBufferSize(24);
-    format.setSamples(4);
+    engine.aspectEngine()->registerAspect(new Qt3D::QRenderAspect());
+    engine.aspectEngine()->registerAspect(new Qt3D::QInputAspect());
 
-    QQuickView view;
-    view.setFormat(format);
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/main.qml"));
+    // Expose the window as a context property so we can set the aspect ratio
+    engine.qmlEngine()->rootContext()->setContextProperty("_window", &view);
+    QVariantMap data;
+    data.insert(QStringLiteral("surface"), QVariant::fromValue(static_cast<QSurface *>(&view)));
+    data.insert(QStringLiteral("eventSource"), QVariant::fromValue(&view));
+    engine.aspectEngine()->setData(data);
+    engine.aspectEngine()->initialize();
+    engine.setSource(QUrl("qrc:/main.qml"));
+
     view.show();
 
     return app.exec();
-
-
 }
 
