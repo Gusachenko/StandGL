@@ -1,7 +1,7 @@
-import Qt3D 2.0
-import Qt3D.Renderer 2.0
-import QtQuick 2.0 as QQ2
 
+import QtQuick 2.0 as QQ2
+import Qt3D.Core 2.0
+import Qt3D.Render 2.0
 
 Entity{
     id:i_MainEntitySpace
@@ -110,9 +110,7 @@ Entity{
     }
 
 
-
-
-    Light{
+    StandLight{
         id: light
         ratio: width / height
     }
@@ -180,21 +178,14 @@ Entity{
         }
 
         property Transform transform_Rocket: Transform {
-            Scale {
-                scale:  1.75
+            matrix: {
+                var m = Qt.matrix4x4();
+                m.translate(Qt.vector3d(0, 1, 0));
+                m.rotate(0, Qt.vector3d(0, 1, 0));
+                m.rotate(0, Qt.vector3d(0, 0, 1));
+                m.scale(1.75);
+                return m;
             }
-            Rotate {
-                axis: Qt.vector3d(0, 1, 0)
-                angle:  0
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 0, 1)
-                angle: 0
-            }
-            Translate {
-                translation: Qt.vector3d(0, 1, 0)
-            }
-
         }
 
         components: [ i_StandBasic, material_Rocket, transform_Rocket ]
@@ -212,25 +203,15 @@ Entity{
         }
 
         property Transform transform_Rocket: Transform {
-            Scale {
-                scale:  1.75
+            matrix: {
+                var m = Qt.matrix4x4();
+                m.translate(Qt.vector3d(0, 0, 0));
+                m.rotate(i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value, Qt.vector3d(0, 1, 0));
+                m.rotate(0, Qt.vector3d(0, 0, 1));
+                m.rotate(0, Qt.vector3d(1, 0, 0));
+                m.scale(1.75);
+                return m;
             }
-            Rotate {
-                axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: 0
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
-                angle: 0
-            }
-            Translate {
-                translation: Qt.vector3d(0, 0, 0)
-            }
-
         }
         components: [ i_RotateMain1, material_Rocket, transform_Rocket ]
     }
@@ -247,25 +228,15 @@ Entity{
         }
 
         property Transform transform_Rocket: Transform {
-            Scale {
-                scale:  1.75
+            matrix: {
+                var m = Qt.matrix4x4();
+                m.translate(Qt.vector3d(0, 3.8, 0));
+                m.rotate(i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value, Qt.vector3d(0, 1, 0));
+                m.rotate(0, Qt.vector3d(0, 0, 1));
+                m.rotate(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value, Qt.vector3d(1, 0, 0));
+                m.scale(1.75);
+                return m;
             }
-            Rotate {
-                axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
-                angle: 0
-            }
-            Translate {
-                translation: Qt.vector3d(0, 3.8, 0)
-            }
-
         }
         components: [ i_RotateMain2, material_Rocket, transform_Rocket ]
     }
@@ -282,32 +253,18 @@ Entity{
         }
 
         property Transform transform_Rocket: Transform {
-            Scale {
-                scale:  1.75
+            matrix: {
+                var m = Qt.matrix4x4();
+                m.translate(Qt.vector3d(0, 3.8, 0));
+                m.rotate(i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value, Qt.vector3d(0, 1, 0));
+                m.rotate(i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value,
+                         Qt.vector3d(0, angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
+                                        angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_z")));
+                m.rotate(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value, Qt.vector3d(1, 0, 0));
+                m.rotate(0, Qt.vector3d(0, 0, 1));
+                m.scale(1.75);
+                return m;
             }
-            Rotate {
-                axis: Qt.vector3d(1, 0, 0)      // X-Axis /\ \/
-                angle: i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value
-            }
-            Rotate {
-                // Y-Axis <->
-               axis: Qt.vector3d(0, angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_y"),
-                                  angleToRotate_Main3(i_mainRoot.mainRoot_Slider_X_Axis_Main2_Value,"axis_z"))
-
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value    // i_mainRoot.mainRoot_Slider_Y_Axis_Main3_Value
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 1, 0)      // Y-Axis <->
-                angle: i_mainRoot.mainRoot_Slider_Y_Axis_Main1_Value
-            }
-            Rotate {
-                axis: Qt.vector3d(0, 0, 1)      // Z-Axis :l:
-                angle: 0
-            }
-            Translate {
-                translation: Qt.vector3d(0, 3.8, 0)
-            }
-
         }
         components: [ i_RotateMain3, material_Rocket, transform_Rocket ]
     }
