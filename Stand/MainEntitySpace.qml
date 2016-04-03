@@ -1,7 +1,6 @@
-
-import QtQuick 2.0 as QQ2
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
+import Qt3D.Logic 2.0
 
 Entity{
     id:i_MainEntitySpace
@@ -110,6 +109,12 @@ Entity{
     }
 
 
+    LogicComponent {
+        onFrameUpdate: {
+            frames++
+        }
+    }
+
     StandLight{
         id: light
         ratio: width / height
@@ -123,7 +128,7 @@ Entity{
         aspectRatio: width / height
         nearPlane: 0.01
         farPlane: 1000.0
-        position: Qt.vector3d( 0.0, 10.0, 35.0 )
+        position: Qt.vector3d(0.0, 10.0, i_mainRoot.mainRoot_Slider_Zoom_Value )
         upVector:  Qt.vector3d(0, 1, 0)
         viewCenter: Qt.vector3d( 0, 0, 0 )
     }

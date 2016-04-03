@@ -11,11 +11,15 @@ import QtQuick.Controls.Styles 1.4
 Item{
     id:i_mainRoot
 
+    width: 480
+    height: 320
+    visible: true
 
     //MainRotation objects
     property real mainRoot_Slider_Y_Axis_Main1_Value: 0
     property real mainRoot_Slider_X_Axis_Main2_Value: 0
-    property real mainRoot_Slider_Y_Axis_Main3_Value: 0
+    property real mainRoot_Slider_Y_Axis_Main3_Value: 0    
+    property real mainRoot_Slider_Zoom_Value: 35.0
 
     property bool mainRoot_Is_Y_Axis_Main1_Enable: false
     property bool mainRoot_Is_X_Axis_Main2_Enable: false
@@ -31,6 +35,7 @@ Item{
     //AnglePosition Tab1
     property real mainRoot_Tab1_PositionAngle: 45
 
+    property int frames: 0
 
     //==========================//
     //Tab1
@@ -57,21 +62,12 @@ Item{
         onTriggered: set_Position_Speed_Main1(mainRoot_Tab1_SpeedRotation_Value)
     }
 
-    width: 650
-    height: 425
-    visible: true
-
-
     Scene3D{
         id:i_Scene3D
-        anchors.rightMargin: 8
-        anchors.bottomMargin: 8
-        anchors.leftMargin: 12
-        anchors.topMargin: 12
+
         anchors.fill: parent
-        anchors.margins: 10
-        //        focus: true
-        aspects: "input"
+        aspects: ["render", "logic"]
+        focus: true
 
         MainEntitySpace{
             id:i_MainEntitySpace
@@ -81,13 +77,13 @@ Item{
     //CONTROL_MENU
     Rectangle{
         id:i_MainControl_Rect
-        radius: 3
-        width: parent.width*0.3
-        height: parent.height
+
+        width: i_Scene3D.width*0.3
+        height: i_Scene3D.height
         color: "#0000ffff"
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-        anchors.margins: 10
+        anchors.verticalCenter: i_Scene3D.verticalCenter
+        anchors.left: i_Scene3D.left
+//        anchors.margins: i_Scene3D.width*0.3
 
 //        border.color:"lightgreen"
 //        border.width: 3
@@ -95,16 +91,39 @@ Item{
 
         Control_AdvancedControl{
             id:i_Rectangle_AdvancedContol
-
-
         }
+
         Control_SlidersControl{
             id:i_RectangleSliders
         }
     }//END CONTROL_MENU
 
+    Control_CustomPieMenu{
+    id:i_RectangleControlPanel
+    }
 
-    Control_CustomPieMenu{}
+    InfoRectangle{
+    id:i_infoRectangle
+    }
 
+    FpsDisplay{
+        id: fpsDisplay
+        anchors.right: parent.right
+        anchors.top: parent.top
+        width: parent.width*0.05
+        height: width
+        hidden: true
+    }
+
+    Timer {
+        interval: 1000
+        repeat: true
+        running: !fpsDisplay.hidden
+        onTriggered: {
+            fpsDisplay.fps = frames
+            frames = 0
+        }
+        onRunningChanged: frames = 0
+    }
 
 }//END MAIN_ROOT

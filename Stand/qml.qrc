@@ -16,5 +16,8 @@
         <file>Control_SlidersControl.qml</file>
         <file>GroundPlane.qml</file>
         <file>StandLight.qml</file>
+        <file>InfoRectangle.qml</file>
+        <file>StyledSlider.qml</file>
+        <file>FpsDisplay.qml</file>
     </qresource>
 </RCC>

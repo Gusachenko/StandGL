@@ -4,7 +4,9 @@
 
 int main(int argc, char *argv[])
 {
-   QGuiApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
+
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QSurfaceFormat format;
     if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {

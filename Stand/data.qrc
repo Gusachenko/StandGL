@@ -5,4 +5,20 @@
         <file>geometryObjects/stand/rotateMain2.obj</file>
         <file>geometryObjects/stand/rotateMain3.obj</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>icons/icon-touchpad-16.png</file>
+        <file>icons/icon-touchpad.png</file>
+        <file>icons/icon-slidersasc-16.png</file>
+        <file>icons/icon-slidersasc.png</file>
+        <file>icons/icon-minimize-16.png</file>
+        <file>icons/icon-minimize.png</file>
+        <file>icons/icon-menu-16.png</file>
+        <file>icons/icon-menu.png</file>
+        <file>icons/icon-info-sign-16.png</file>
+        <file>icons/icon-info-sign.png</file>
+        <file>icons/icon-zoom-out-16.png</file>
+        <file>icons/icon-zoom-out.png</file>
+        <file>icons/icon-zoom-in-16.png</file>
+        <file>icons/icon-zoom-in.png</file>
+    </qresource>
 </RCC>
