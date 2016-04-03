@@ -6,4 +6,6 @@ Stand motion in GLSL+QML
   <li>QML</li>
   <li>Qt3d</li>
   <li>https://youtu.be/3pQIkUzxYDg</li>
+  <li>UI: 
+![alt text](https://github.com/Gusachenko/StandGL/blob/master/icons/StandUIAndroid.png?raw=true "UI Android")</li>
   </ul>
