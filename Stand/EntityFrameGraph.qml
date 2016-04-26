@@ -1,5 +1,3 @@
-import QtQuick 2.0
-
 import Qt3D 2.0
 import Qt3D.Renderer 2.0
 
@@ -14,8 +12,8 @@ FrameGraph {
         rect: Qt.rect(0.0, 0.0, 1.0, 1.0)
         clearColor: "grey"
 
-        TechniqueFilter {
-            requires: [ Annotation { name: "name"; value: "Desktop" } ]
+//        TechniqueFilter {
+//            requires: [ Annotation { name: "name"; value: "Desktop" } ]
 
 
             RenderPassFilter {
@@ -29,9 +27,9 @@ FrameGraph {
                                 type: RenderAttachment.DepthAttachment
                                 texture: Texture2D {
                                     id: depthTexture
-                                    width: _window.width
-                                    height: _window.height
-                                    format: Texture.D24
+                                    width: /*_window.width*/1024
+                                    height: /*_window.height*/1024
+                                    format: /*Texture.D24*/Texture.DepthFormat
                                     generateMipMaps: false
                                     magnificationFilter: Texture.Linear
                                     minificationFilter: Texture.Linear
@@ -55,7 +53,7 @@ FrameGraph {
                     }
                 }
             }
-        }
+//        }
 
         RenderPassFilter {
             includes: [ Annotation { name: "pass"; value: "forward" } ]

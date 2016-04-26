@@ -1,9 +1,10 @@
 TEMPLATE = app
 
-QT += qml quick
+QT += qml quick gui quick 3dcore 3drenderer 3dinput 3dquick
 CONFIG += c++11
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    window.cpp
 
 RESOURCES += qml.qrc \
     data.qrc
@@ -17,4 +18,7 @@ include(deployment.pri)
 DISTFILES += \
     g_wireframe.vsh \
     g_wireframe.fsh
+
+HEADERS += \
+    window.h
 
