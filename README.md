@@ -5,6 +5,11 @@ Stand motion in GLSL+QML
   <li>branch "motion" - Qt 5.5.1  : Window based(QWindow C++)</li> 
   <li>Qt3D, Javascript</li>
   <li>https://youtu.be/3pQIkUzxYDg</li>
-  <li> 
-![alt text](https://github.com/Gusachenko/StandGL/blob/master/icons/StandUIAndroid.png?raw=true "UI Android")</li>
   </ul>
+  
+  
+  
+### UI
+
+
+![alt text](https://raw.githubusercontent.com/Gusachenko/StandGL/master/icons/StandUIAndroid.png "UI Android")
